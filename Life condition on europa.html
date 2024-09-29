@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essential Conditions for Life on Europa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        #europa-diagram {
+            width: 100%;
+            height: 400px;
+            background-color: #1a1a2e;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        #chemical-elements {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .element {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+        }
+        .tooltip {
+            visibility: hidden;
+            width: 200px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .element:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+        #layer-info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(255,255,255,0.8);
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Essential Conditions for Life on Europa</h1>
+        
+        <h2>1. Liquid Water</h2>
+        <p>Liquid water is a fundamental requirement for life as we know it. Europa, one of Jupiter's moons, is believed to have a global subsurface ocean, making it a potential candidate for harboring life.</p>
+        
+        <div id="europa-diagram">
+            <svg width="100%" height="100%" viewBox="0 0 400 400">
+                <circle id="rocky-core" cx="200" cy="200" r="80" fill="#8b4513" />
+                <circle id="ocean" cx="200" cy="200" r="150" fill="#0077be" />
+                <circle id="ice-shell" cx="200" cy="200" r="190" fill="#a5d8ff" />
+                <circle id="surface" cx="200" cy="200" r="195" fill="#e0e0e0" />
+            </svg>
+            <div id="layer-info">
+                Hover over layers to learn more
+            </div>
+        </div>
+        
+        <h2>2. Chemical Building Blocks</h2>
+        <p>Life requires essential elements, often referred to as CHNOPS: Carbon, Hydrogen, Nitrogen, Oxygen, Phosphorus, and Sulfur. These elements form the basis of organic molecules necessary for life.</p>
+        
+        <div id="chemical-elements">
+            <div class="element" style="background-color: #4CAF50;">
+                C
+                <span class="tooltip">Carbon: The backbone of organic molecules</span>
+            </div>
+            <div class="element" style="background-color: #2196F3;">
+                H
+                <span class="tooltip">Hydrogen: Essential for water and organic compounds</span>
+            </div>
+            <div class="element" style="background-color: #F44336;">
+                N
+                <span class="tooltip">Nitrogen: Crucial for amino acids and nucleic acids</span>
+            </div>
+            <div class="element" style="background-color: #FFC107;">
+                O
+                <span class="tooltip">Oxygen: Vital for respiration and energy production</span>
+            </div>
+            <div class="element" style="background-color: #9C27B0;">
+                P
+                <span class="tooltip">Phosphorus: Key component of DNA and energy transfer</span>
+            </div>
+            <div class="element" style="background-color: #FF9800;">
+                S
+                <span class="tooltip">Sulfur: Important in proteins and energy metabolism</span>
+            </div>
+        </div>
+        
+        <h2>3. Energy Sources</h2>
+        <p>Energy is crucial for metabolic processes in living organisms. On Europa, potential energy sources include:</p>
+        <ul>
+            <li>Tidal heating from Jupiter's gravitational pull</li>
+            <li>Chemical energy from potential hydrothermal vents</li>
+            <li>Trace amounts of solar radiation penetrating the ice</li>
+        </ul>
+    </div>
+
+    <script>
+        const layers = ['surface', 'ice-shell', 'ocean', 'rocky-core'];
+        const layerInfo = {
+            'surface': 'Surface: Icy crust with characteristic reddish-brown stripes',
+            'ice-shell': 'Ice Shell: Thick layer of ice, possibly 15-25 km deep',
+            'ocean': 'Ocean: Global liquid water ocean, possibly 60-150 km deep',
+            'rocky-core': 'Rocky Core: Solid core, source of minerals and possibly heat'
+        };
+        const layerInfoElement = document.getElementById('layer-info');
+
+        layers.forEach(layer => {
+            const element = document.getElementById(layer);
+            
+            element.addEventListener('mouseover', () => {
+                layerInfoElement.textContent = layerInfo[layer];
+                element.style.opacity = '0.7';
+            });
+            
+            element.addEventListener('mouseout', () => {
+                layerInfoElement.textContent = 'Hover over layers to learn more';
+                element.style.opacity = '1';
+            });
+        });
+    </script>
+</body>
+</html>
